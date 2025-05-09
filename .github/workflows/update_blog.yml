@@ -3,38 +3,36 @@ name: Update Blog Posts
 on:
   push:
     branches:
-      - main  # main 브랜치에 푸시될 때 자동 실행
+      - main
   schedule:
-    - cron: '0 0 * * *'  # 매일 자정에 자동 실행
+    - cron: '0 0 * * *'
 
 jobs:
   update_blog:
-    runs-on: ubuntu-latest  # GitHub Actions가 실행될 환경 (Ubuntu)
+    runs-on: ubuntu-latest
 
     steps:
-    # 1단계: 코드 체크아웃
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    # 2단계: Node.js 설정
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '16'  # Node.js 버전 (최신 LTS 버전 추천)
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
 
-    # 3단계: 의존성 설치
-    - name: Install dependencies
-      run: |
-        npm install  # package.json에 있는 의존성들 설치
+      - name: Install dependencies
+        run: npm install
 
-    # 4단계: 자동화 스크립트 실행
-    - name: Run sync script
-      run: |
-        node sync-to-github.js
+      - name: Run sync script
+        run: node sync-to-github.js
 
-    # 5단계: Git 설정 및 푸시
-    - name: Push changes
-      run: |
-        git config --global user.name 'github-actions[bot]'
-        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-        git push https://${{ secrets.GH_PAT }}@github.com/shj78/velog.git
+      - name: Commit and push changes
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git pull origin main --rebase
+          git add .
+          git commit -m "Update blog post" || echo "Nothing to commit"
+          git push https://$GH_TOKEN@github.com/shj78/velog.git

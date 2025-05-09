@@ -5,5 +5,5 @@
   "main": "sync-to-github.js",
   "scripts": {
     "start": "node sync-to-github.js"
-  },
+  }
 }

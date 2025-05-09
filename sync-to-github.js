@@ -4,16 +4,24 @@ const path = require("path");
 const { execSync } = require("child_process");
 
 const parser = new Parser();
-const username = "deepsea"; // Velog 아이디
+const username = "shj78"; // Velog 아이디
 const feedUrl = `https://v2.velog.io/rss/@${username}`;
 
 async function fetchAndSave() {
+  // 'posts' 디렉토리 경로
+  const postsDir = path.join(__dirname, "posts");
+
+  // 'posts' 디렉토리가 존재하지 않으면 생성
+  if (!fs.existsSync(postsDir)) {
+    fs.mkdirSync(postsDir, { recursive: true });
+  }
+
   const feed = await parser.parseURL(feedUrl);
   console.log(`📥 Fetched ${feed.items.length} posts`);
 
   feed.items.forEach((item) => {
     const title = item.title.replace(/[\/\\?%*:|"<>]/g, "-");
-    const filePath = path.join("posts", `${title}.md`);
+    const filePath = path.join(postsDir, `${title}.md`);
     const content = `# ${item.title}\n\n${item.contentSnippet}\n\n[Read more](${item.link})`;
 
     fs.writeFileSync(filePath, content);

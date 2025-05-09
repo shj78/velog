@@ -1,9 +1,11 @@
 {
   "name": "velog-sync",
   "version": "1.0.0",
-  "description": "Sync blog posts to GitHub",
   "main": "sync-to-github.js",
   "scripts": {
     "start": "node sync-to-github.js"
+  },
+  "dependencies": {
+    "rss-parser": "^3.12.0"
   }
 }

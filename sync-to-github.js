@@ -5,7 +5,7 @@ const { execSync } = require("child_process");
 
 const parser = new Parser();
 const username = "shj78"; // Velog 아이디
-const feedUrl = `https://v2.velog.io/rss/${username}`;
+const feedUrl = `https://v2.velog.io/rss/@${username}`;
 
 async function fetchAndSave() {
   const feed = await parser.parseURL(feedUrl);

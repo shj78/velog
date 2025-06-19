@@ -1,7 +1,7 @@
 # Vue Island
 
 Vue란 무엇인가?
-   MVVM 패턴의 ViewModel 레이어에 해당하는 View 단 라이브러리
+: MVVM 패턴의 ViewModel 레이어에 해당하는 View 단 라이브러리
 MVVM패턴이란?
 Backend 로직과 Client 마크업 & 데이터 표현단을 분리하기 위한 구조
 MVC에서 기인

@@ -55,5 +55,7 @@ function Tanstack(){
 }
 그리고 무엇보다도 코드가 간결합니다.
 참 쉽죠.
+useQuery 가 반환하는 속성
+useQuery의 queryKey를 관리하는 방법
 
 [Read more](https://velog.io/@deepsea/Tanstack-Hill)

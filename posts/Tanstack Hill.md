@@ -29,7 +29,7 @@ function NonTanstack(){
   return <div>{data}</div>;
 }
 이런식으로 데이터를 요청하다보면,
-여러 컴포넌트에서 /api/data 경로로 데이터 요청을 한다 했을 때는 중복 호출이 발생하게 됩니다.
+여러 컴포넌트에서 /api/data 경로로 데이터 요청을 한다 했을 때는 중복 호출이 발생하게 됩니다. 
 또 캐싱이 없기 때문에 새로 로딩하고,
 오래된 데이터를 가지고 있을 수 있고,
 네트워크 에러시 수동 시도 등이 필요한 불편한 점이 있습니다.
@@ -102,9 +102,9 @@ queryClient.setQueryData(
  ['todo', 1], //수정할 키 
    (oldData) => ({...oldData, title: 'wicked'})
 );
-이렇게 Tanstack은 React가 의도적으로 다루지 않는 서버 상태 관리를 해결하면서,
+이렇게 Tanstack은 React가 의도적으로 다루지 않는 서버 상태 관리를 해결하면서, DRY(Don't Repeat Yourself)원칙을 지킬 수 있도록 지원하고,
 React가 UI 렌더링에 집중할 수 있도록 데이터 관리 계층을 분리해주는 
-상호보완적 라이브러리의 역할을 해주고 있습니다.
+상호보완적 라이브러리의 역할을 해줍니다.
 다음 포스팅에는 
 queryKey 계층화
 enabled
@@ -112,6 +112,6 @@ select
 staleTime 
 cacheTime
 refetchOnWindowFocus
-같이 Tanstack을 더 유연하게 쓸 수 있는 방법에 대해서 알아봐야겠습니다.
+같이 Tanstack을 더 유연하게 쓸 수 있는 방법에 대해서 알아보겠습니다.
 
 [Read more](https://velog.io/@deepsea/Tanstack-Hill)

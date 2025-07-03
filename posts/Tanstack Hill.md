@@ -3,7 +3,8 @@
 Tanstack (구 React Query)
 Tanstack 은?
 서버의 상태관리 도구로, React의 데이터 관리 측면에서의 아쉬운 점 들을 한방에 해결해주는 라이브러리입니다.
-Tanstack 전에는 React에서 서버로부터 받아온 데이터를 다루는데 아래와 같이 useState, useEffect 훅을 이용했어요.
+Tanstack 전에는 
+React에서 서버로부터 받아온 데이터를 다루는데 아래와 같이 useState, useEffect 훅을 이용했어요.
 function NonTanstack(){
   const [data,setData] = useState(null);
   const [loading, setLoading] = useSate(null);
@@ -39,7 +40,9 @@ function NonTanstack(){
 자동 재시작
 백그라운드 업데이트
 stale time(얼마나 데이터가 최신인 지) 을 지원합니다.
-안쓸 수가 없겠죠?
+추가적으로 React 공식문서 조차도 useEffect를 이용한 데이터 페칭을 권장하지 않습니다.
+cf) You Might Not Need an Effect
+Tanstack 안쓸 수가 없겠죠?
 Tanstack에는 기본적으로 데이터 불러오기, 데이터 변경, 캐시 조작의 3가지의 개념이 있습니다.
 1. useQuery
 //queryClient 셋팅했다고 가정
@@ -62,7 +65,9 @@ useQuery가 반환하는 객체에는
 다양한 속성(data, isLoading, idError, error, isFetching, isSuccess, isStale, refetch...)을 제공하고 있고, 
 이 객체안에서 페칭한 데이터, 로딩/에러등의 데이터 관련 상태를 확인할 수 있습니다.
 더 정확하게는 React Query Devtool을 통해 
-어떤 쿼리 키가 활성화되어있는 지, 상태가 fresh한지, 캐시에 어떤 데이터가 저장되어있는 지 등을 확인할 수 있습니다.
+어떤 쿼리 키가 활성화되어있는 지, 
+상태가 fresh한지, 
+캐시에 어떤 데이터가 저장되어있는 지 등을 확인할 수 있습니다.
 그리고 무엇보다도 코드가 간결해집니다.
 참 좋죠.
 2. useMutation
@@ -102,7 +107,8 @@ queryClient.setQueryData(
  ['todo', 1], //수정할 키 
    (oldData) => ({...oldData, title: 'wicked'})
 );
-이렇게 Tanstack은 React가 의도적으로 다루지 않는 서버 상태 관리를 해결하면서, DRY(Don't Repeat Yourself)원칙을 지킬 수 있도록 지원하고,
+이렇게 Tanstack은 React가 의도적으로 다루지 않는 서버 상태 관리를 해결하면서, 
+DRY(Don't Repeat Yourself)원칙을 지킬 수 있도록 지원하고,
 React가 UI 렌더링에 집중할 수 있도록 데이터 관리 계층을 분리해주는 
 상호보완적 라이브러리의 역할을 해줍니다.
 다음 포스팅에는 

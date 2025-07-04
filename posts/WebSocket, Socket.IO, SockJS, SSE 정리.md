@@ -29,7 +29,6 @@ publishing(발행한다)/subscribe(구독한다)기반
 클라이언트가 서버로 메시지 보내는 것  : pub
 클라이언트가 서버로부터 메시지 받는 것 : sub
 Handler필요 없이 WebsocketConfigurer에 @EnableWebsocketMessageBroker 로 STOMP 사용 선언 후 @MessageMapping어노테이션 만으로 메시지 pub시 엔드 포인트(종착지)를 별도로 분리하여 관리
- 
 웹소켓만을 사용할 때 보다 간편해진 코드
 필수로 오버라이드할 게 사라진다
 handler 클래스를 구성할 필요가 없다(인터셉터를 설정할 게 아니라면)

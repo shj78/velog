@@ -15,6 +15,11 @@ Provider 없이 가능
 유연한 구조
 리렌더링 최적화(필요한 상태만 구독)
 Typescript 없어도 됨
+주떈드의 구조
+create((set,get)=>{
+  });
+create : 제네릭으로 전체 store의 타입 지정
+(set, get) => { ... } : Zustand가 제공하는 함수들을 
 다른 라이브러리와의 비교
 라이브러리
 특징/장점

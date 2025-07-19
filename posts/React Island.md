@@ -114,6 +114,19 @@ DOM 조작
 [] : 빈배열의 경우 컴포넌트의 마운트 시 1회 실행
 [key] : 의존성 값이 있을 경우 해당 값이 변경될 때 마다 실행
 없음 : 매 렌더링 마다 실행
+cf) 클린업 함수
+useEffect 내에서 언마운트되거나 초기로딩을 제외한 의존성 배열이 변경될 때 실행됩니다. 메모리 누수 방지용으로 사용합니다.
+useEffect(() => {
+...
+
+  const listener = window.naver.maps.Event.addListener(map, 'click', handleMapClick);
+
+  return () => {
+      if (listener) {
+          window.naver.maps.Event.removeListener(listener);
+      }
+  };
+}, [map, manualLocationMode, currentLocationMarker]);
 useRef 돔 참조 및 값 유지
 useRef는 DOM요소에 접근하거나 렌더링과 관계없이 값을 저장할 때 사용합니다.
 즉 컴포넌트 인스턴스가 살아있는 동안 한번만 초기화됩니다.
